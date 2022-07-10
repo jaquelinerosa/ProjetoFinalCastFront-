@@ -1,0 +1,66 @@
+.header {
+    height: 7%;
+    display: flex;
+    background-color: #1100ff;
+}
+
+.header .logo {
+    display: flex;
+    width: 40%;
+    padding: 3% 3% 3% 1%;
+    float: left;
+}
+
+.header .logo img {
+    width: 50%;
+    height: 50%;
+}
+
+.header .home {
+    display: flex;
+    width: 60%;
+}
+
+.navigation ul li {
+    list-style: none;
+}
+
+.navigation ul li a {
+    display: flex;
+}
+
+.navigation ul li a .icon {
+    text-align: center;
+    line-height: 70px;
+    margin-right: 0.2rem;
+}
+
+.navigation ul li a .icon mat-icon {
+    font-size: 1.8rem;
+}
+
+.navigation ul li a .opcao {
+    padding-left: 10px;
+    line-height: 60px;
+}
+
+.opcao {
+    font-size: 16px;
+}
+
+.header .home a {
+    margin-right: 2rem;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-size: 1.6rem;
+    float: left;
+}
+
+.header .home a:hover {
+    color: #33a4a8 !important;
+}
+
+.mat-icon {
+    height: auto !important;
+}
+
