@@ -11,10 +11,6 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'delete-cursos',
-    component: DeleteComponent
-  },
-  {
     path: 'create-cursos',
     component: CreateComponent
   },
