@@ -2,9 +2,8 @@
     <div class="mat-elevation-z2 container">
         <div class="create">
             <h1>Cursos</h1>
-            <button class="button" mat-stroked-button color="primary"> + NOVO CURSO </button>
+            <button class="button" (click)="adicionarNovoCurso()" mat-stroked-button color="primary"> + ADICIONAR </button>
         </div>
-
         <table mat-table [dataSource]="dataSource">
             <ng-container matColumnDef="idCurso">
                 <th mat-header-cell *matHeaderCellDef> ID </th>

@@ -1,1 +1,46 @@
-<p>create works!</p>
+<div class="container">
+    <form class="form class= mat-elevation-z2">
+        <h1>Cadastro de Cursos</h1>
+        <!-- <mat-form-field class="full-width">
+            <mat-label>Nome</mat-label>
+            <input type="text" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" [(ngModel)]="cliente.nome" [formControl]="nome" required name="nome" maxlength="60" matInput placeholder="Ex. Alan Aquino">
+            <mat-error *ngIf="nome.invalid">{{ errorValidNome() }}</mat-error>
+        </mat-form-field> -->
+
+        <mat-form-field class="full-width" appearance="standard">
+            <mat-label>Selecione a Categoria</mat-label>
+            <mat-select [(ngModel)]="curso.categoria" name="categoria">
+              <mat-option *ngFor="let categoria of categorias" [value]="categoria.categoria">
+                {{categoria.categoria.nome}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Data Abertura</mat-label>
+            <input type="text" mask="d0/M0/0000" [dropSpecialCharacters]=" false " [(ngModel)]="curso.dataAbertura" name="dataAbertura" [formControl]="dataAbertura" maxlength="10" matInput placeholder="Ex. 00/00/0000">
+            <mat-error *ngIf="dataAbertura.invalid">{{ validDataAbertura() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Data Fechamento</mat-label>
+            <input type="text" mask="d0/M0/0000" [dropSpecialCharacters]="false" [(ngModel)]="curso.dataFechamento" name="dataFechamento" [formControl]="dataFechamento" maxlength="10" matInput placeholder="Ex. 00/00/0000">
+            <!-- <mat-error *ngIf="dataFechamento.invalid">{{ validDataFechamento() }}</mat-error> -->
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Descrição</mat-label>
+            <input type="text" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" [(ngModel)]="curso.descricao" [formControl]="descricao" name="descricao" maxlength="60" matInput placeholder="Ex. Esse curso...">
+            <mat-error *ngIf="descricao.invalid">{{ validDescricao() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Quantidade de Alunos</mat-label>
+            <input type="number" [(ngModel)]="curso.qtdAluno" name="qtdAluno" [formControl]="qtdAluno" maxlength="3" matInput placeholder="Ex. 40">
+            <!-- <mat-error *ngIf="qtdAluno.invalid">{{ validQtdAluno() }}</mat-error> -->
+        </mat-form-field>
+
+        <button type="button" (click)="create()" [disabled]="false" mat-stroked-button color="basic">Adicionar</button>
+        <button type="button" (click)="exit()" mat-stroked-button color="warn">Voltar</button>
+    </form>
+</div>

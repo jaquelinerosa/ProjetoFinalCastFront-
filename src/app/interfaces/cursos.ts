@@ -3,9 +3,9 @@ export interface Cursos{
       id?: number,
       nome?: string,
     },
-    dataAbertura?: any,
-    dataFechamento?: any,
+    dataAbertura: string,
+    dataFechamento: string,
     descricao?: string,
     idCurso?: number,
-    qtdAluno?: string,
+    qtdAluno?: number,
 }

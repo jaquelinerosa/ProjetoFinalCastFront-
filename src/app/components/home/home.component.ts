@@ -36,4 +36,8 @@ export class HomeComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     }))
   }
+
+  public adicionarNovoCurso(): void {
+    this.router.navigate(['create-cursos'])
+  }
 }
