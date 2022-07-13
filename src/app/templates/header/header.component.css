@@ -1,7 +1,7 @@
 .header {
     height: 7%;
     display: flex;
-    background-color: #1100ff;
+    background-color: #A1E1FA;
 }
 
 .header .logo {
@@ -50,14 +50,14 @@
 
 .header .home a {
     margin-right: 2rem;
-    color: #ffffff !important;
+    color: black !important;
     text-decoration: none !important;
     font-size: 1.6rem;
     float: left;
 }
 
 .header .home a:hover {
-    color: #33a4a8 !important;
+    color: rgb(51, 50, 50)!important;
 }
 
 .mat-icon {
