@@ -38,6 +38,8 @@ export class HomeComponent implements OnInit {
   }
 
   public adicionarNovoCurso(): void {
+   
+    
     this.router.navigate(['create-cursos'])
   }
 }

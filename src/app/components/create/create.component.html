@@ -4,8 +4,8 @@
         <mat-form-field class="full-width" appearance="standard">
             <mat-label>Selecione a Categoria</mat-label>
             <mat-select [(ngModel)]="curso.categoria" name="categoria">
-              <mat-option *ngFor="let categoria of categorias" [value]="categoria.categoria">
-                {{categoria.categoria.nome}}
+              <mat-option *ngFor="let categoria of categorias" [value]="categoria">
+                {{categoria.nome}}
               </mat-option>
             </mat-select>
         </mat-form-field>

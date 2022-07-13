@@ -43,7 +43,7 @@ mat-paginator {
     background-color: white;
     float: right;
     margin-right: 1.5rem;
-    outline: blue;
+    outline: rgb(13, 155, 238);
 }
 
 .create button:hover {

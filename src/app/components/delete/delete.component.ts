@@ -49,7 +49,7 @@ export class DeleteComponent implements OnInit {
       for (let i = 0; i < resp.length; i++) {
         if (resp[i].idCurso == Number(this.id_curso)) {
           this.curso = resp[i];
-          console.log("this.curso",this.curso)
+          console.log("this.curso", this.curso)
         }
       }
     }
@@ -57,13 +57,17 @@ export class DeleteComponent implements OnInit {
   }
 
   delete(): void {
-    this.cursosService.delete(this.id_curso).subscribe(resp => {
-      this.router.navigate(['/']);
-      this.cursosService.message('Curso deletato com sucesso!');
-      console.log("entrou")
-    }, err => {
-      console.log(err)
-    })
+    this.cursosService.delete(this.id_curso)
+      .subscribe({
+        next: resp => {
+          alert("Curso deletado com sucesso!")
+          this.router.navigate(['/']);
+
+
+        }, error: error => {
+
+        }
+      })
   }
 
   message(msg: string): void {

@@ -14,11 +14,11 @@ import { CursosService } from 'src/app/services/cursos.service';
 export class CreateComponent implements OnInit {
 
   categorias: Categorias[] = [
-    {categoria: {id: 1, nome: "Multiplataforma"}},
-    {categoria: {id: 2, nome: "Banco de dados"}},
-    {categoria: {id: 3, nome: "Metodologia"}},
-    {categoria: {id: 4, nome: "Comportamento"}},
-    {categoria: {id: 5, nome: "Comunicação"}},
+     {id: 1, nome: "Multiplataforma"},
+     {id: 2, nome: "Banco de dados"},
+     {id: 3, nome: "Metodologia"},
+     {id: 4, nome: "Comportamento"},
+     {id: 5, nome: "Comunicação"},
   ]
 
   curso: Cursos = {

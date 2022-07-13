@@ -1,34 +1,43 @@
-<div class="container">
+<div [formGroup]="formUpdate" class="container">
     <form class="form class= mat-elevation-z8 ">
         <h1>Atualizando Cursos</h1>
         <mat-form-field class="full-width">
-            <mat-label>Nome</mat-label>
-            <input [(ngModel)]="curso.idCurso" [formControl]="idCurso" required name="idCurso" maxlength="60" matInput placeholder="Ex. Jaqueline Rosa">
-            <mat-error *ngIf="idCurso.invalid">{{ errorValidIdCurso() }}</mat-error>
+            <mat-label>ID</mat-label>
+              <input formControlName="idCurso" name="idCurso" maxlength="60" matInput placeholder="Ex. jaque">   
+            <mat-error *ngIf="this.formUpdate.get('idCurso')!.invalid">{{ errorValidIdCurso() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="standard">
+            <mat-label>Selecione a Categoria</mat-label>
+            <mat-select formControlName="categoria" name="categoria">
+              <mat-option *ngFor="let categoria of categorias" [value]="categoria.id" >
+                {{categoria.nome}}
+              </mat-option>
+            </mat-select>
         </mat-form-field>
 
         <mat-form-field class="full-width">
-            <mat-label>CATEGORIA</mat-label>
-            <input [(ngModel)]="curso.categoria" name="categoria" [formControl]="categoria" required maxlength="15" >
-            <mat-error *ngIf="categoria.invalid">{{ errorValidCategoria() }}</mat-error>
+            <mat-label>Descrição</mat-label>
+            <input type="text" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" formControlName="descricao"  name="descricao" maxlength="60" matInput placeholder="Ex. Esse curso...">
+            <mat-error *ngIf="this.formUpdate.get('descricao')!.invalid">{{ errorValidDescricao() }}</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
-            <mat-label>DESCRICAO</mat-label>
-            <input [(ngModel)]="curso.descricao" name="descricao" [formControl]="descricao" required maxlength="15" >
-            <mat-error *ngIf="descricao.invalid">{{ errorValidDescricao() }}</mat-error>
+            <mat-label>Data Abertura</mat-label>
+            <input type="text" mask="d0/M0/0000" [dropSpecialCharacters]=" false " formControlName="dataAbertura" name="dataAbertura"  maxlength="10" matInput placeholder="Ex. 00/00/0000">
+            <mat-error *ngIf="this.formUpdate.get('dataAbertura')!.invalid">{{ errorValidDataAbertura() }}</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
-            <mat-label>DT. ABERTURA</mat-label>
-            <input type="text" [(ngModel)]="curso.dataAbertura" mask="d0/M0/0000" [dropSpecialCharacters]=" false " name="dataAbertura" [formControl]="dataAbertura" required maxlength="10" matInput placeholder="Ex. 00/00/0000 (apenas os números)">
-            <mat-error *ngIf="dataAbertura.invalid">{{ errorValidDataAbertura() }}</mat-error>
+            <mat-label>Data Fechamento</mat-label>
+            <input type="text" mask="d0/M0/0000" [dropSpecialCharacters]="false" formControlName="dataFechamento" name="dataFechamento"  maxlength="10" matInput placeholder="Ex. 00/00/0000">
+            <mat-error *ngIf="this.formUpdate.get('dataFechamento')!.invalid">{{ errorValidDataFechamento() }}</mat-error>  
         </mat-form-field>
 
         <mat-form-field class="full-width">
-            <mat-label>DT. FECHADURA</mat-label>
-            <input type="text" [(ngModel)]="curso.dataFechamento" mask="d0/M0/0000" [dropSpecialCharacters]=" false " name="dataFechamento"[formControl]="dataFechamento" required maxlength="18" matInput placeholder="Ex. (00) 90000-0000 (apenas os números)">
-            <mat-error *ngIf="dataFechamento.invalid">{{ errorValidDataFechamento() }}</mat-error>
+            <mat-label>Quantidade de Alunos</mat-label>
+            <input type="number" formControlName="qtdAluno" name="qtdAluno" maxlength="3" matInput placeholder="Ex. 40">
+            <mat-error *ngIf="this.formUpdate.get('qtdAluno')!.invalid">{{ errorValidQtdAluno() }}</mat-error> 
         </mat-form-field>
 
         <button type="button" class="mat-elevation-z8" (click)="update()" [disabled]="errorValidIdCurso() || errorValidCategoria() || errorValidDescricao() || errorValidDataAbertura() || errorValidDataFechamento() || errorValidQtdAluno()" mat-stroked-button color="basic">ATUALIZAR</button>
