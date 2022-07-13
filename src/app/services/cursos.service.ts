@@ -41,7 +41,7 @@ export class CursosService {
   }
 
    update(curso: Cursos): Observable<Cursos> {
-     const url = `${this.api}/cursos/${curso.idCurso}`;
+     const url = `${this.api}/cursos`;
     return this.http.put<Cursos>(url, curso);
    }
 

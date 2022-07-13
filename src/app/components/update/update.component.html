@@ -1,5 +1,5 @@
-<div [formGroup]="formUpdate" class="container">
-    <form class="form class= mat-elevation-z8 ">
+<div  class="container">
+    <form [formGroup]="formUpdate" class="form class= mat-elevation-z8 ">
         <h1>Atualizando Cursos</h1>
         <mat-form-field class="full-width">
             <mat-label>ID</mat-label>
@@ -10,8 +10,8 @@
         <mat-form-field class="full-width" appearance="standard">
             <mat-label>Selecione a Categoria</mat-label>
             <mat-select formControlName="categoria" name="categoria">
-              <mat-option *ngFor="let categoria of categorias" [value]="categoria.id" >
-                {{categoria.nome}}
+              <mat-option *ngFor="let c of categorias" [value]="c" >
+                {{c.nome}}
               </mat-option>
             </mat-select>
         </mat-form-field>
@@ -40,7 +40,7 @@
             <mat-error *ngIf="this.formUpdate.get('qtdAluno')!.invalid">{{ errorValidQtdAluno() }}</mat-error> 
         </mat-form-field>
 
-        <button type="button" class="mat-elevation-z8" (click)="update()" [disabled]="errorValidIdCurso() || errorValidCategoria() || errorValidDescricao() || errorValidDataAbertura() || errorValidDataFechamento() || errorValidQtdAluno()" mat-stroked-button color="basic">ATUALIZAR</button>
+        <button type="button" class="mat-elevation-z8" (click)="update()" [disabled]="this.formUpdate.invalid" mat-stroked-button color="basic">ATUALIZAR</button>
         <button type="button" class="mat-elevation-z8" (click)="cancel()" mat-stroked-button color="warn">CANCELAR</button>
     </form>
 </div>

@@ -20,62 +20,46 @@ export class UpdateComponent implements OnInit {
     { id: 5, nome: "Comunicação" },
   ]
 
-
-  id_curso = ''
-
-  curso: Cursos = {
-    categoria: {
-      id: undefined,
-      nome: '',
-    },
-    idCurso: undefined,
-    descricao: '',
-    dataAbertura: '',
-    dataFechamento: '',
-    qtdAluno: undefined,
-
-
-  }
   formUpdate!: FormGroup;
   constructor(
     private router: Router,
     private cursosService: CursosService,
     private route: ActivatedRoute) { }
 
-
   ngOnInit(): void {
-    this.id_curso = this.route.snapshot.paramMap.get('id')!;
+    let idCurso = this.route.snapshot.paramMap.get('id')!;
     // this.findById();
     this.formUpdate = new FormGroup({
-      idCurso : new FormControl('', [Validators.minLength(1), Validators.required]),
-      categoria : new FormControl('', [Validators.minLength(1), Validators.required]),
-      dataAbertura : new FormControl('', [Validators.minLength(10), Validators.required]),
-      dataFechamento : new FormControl('', [Validators.minLength(10), Validators.required]),
-      descricao : new FormControl('', [Validators.minLength(1), Validators.required]),
-      qtdAluno : new FormControl('', [Validators.minLength(500), Validators.required])
+      idCurso: new FormControl('', [Validators.minLength(1), Validators.required]),
+      categoria: new FormControl('', [Validators.minLength(1), Validators.required]),
+      dataAbertura: new FormControl('', [Validators.minLength(10), Validators.required]),
+      dataFechamento: new FormControl('', [Validators.minLength(10), Validators.required]),
+      descricao: new FormControl('', [Validators.minLength(1), Validators.required]),
+      qtdAluno: new FormControl('')
     });
 
-    this.buscaCurso();
-
-
+    this.buscaCurso(idCurso);
   }
 
-
-  public buscaCurso(): void {
+  public buscaCurso(idCurso: string): void {
     this.cursosService.buscarTodosCursos().subscribe((resp => {
       console.log("resp", resp);
       for (let i = 0; i < resp.length; i++) {
-        if (resp[i].idCurso == Number(this.id_curso)) {
-          this.curso = resp[i];
-          console.log("this.curso", this.curso)
+        if (resp[i].idCurso == Number(idCurso)) {
+          let curso = resp[i];
+          this.formUpdate.patchValue({ idCurso: curso.idCurso });
+          this.formUpdate.patchValue({ categoria: curso.categoria });
+          this.formUpdate.patchValue({ descricao: curso.descricao });
+          this.formUpdate.patchValue({ dataAbertura: curso.dataAbertura });
+          this.formUpdate.patchValue({ dataFechamento: curso.dataFechamento });
+          this.formUpdate.patchValue({ qtdAluno: curso.qtdAluno });
         }
       }
-    }
-    ))
+    }));
   }
 
   update(): void {
-    this.cursosService.update(this.curso)
+    this.cursosService.update(this.formUpdate.value)
       .subscribe({
         next: () => {
           alert("Curso editado com sucesso!")
@@ -88,42 +72,8 @@ export class UpdateComponent implements OnInit {
       })
   }
 
-  // update(): void {
-  //   this.cursosService.update(this.id_curso).subscribe(resp => {
-  //     this.router.navigate(['/']);
-  //     this.cursosService.message('Curso editado com sucesso!');
-  //     console.log("entrou")
-  //   }, err => {
-  //     console.log(err)
-  //   })
-  // }
-
-
-  // update(): void {
-
-  //   this.service.update(this.curso).subscribe((resp) => {
-
-  //     this.router.navigate(['cursos'])
-  //     this.service.message('Curso atualizado com sucesso!')
-
-  //   }, err => {
-  //     if (err.error.error.match('já cadastrado')) {
-  //       console.log('Log', err.error.error);
-  //       this.service.message(err.error.error);
-  //     } else if (err.error.errors[0].message === "número do registro de contribuinte individual brasileiro (CPF) inválido"){
-  //       this.service.message(err.error.errors[0].message);
-  //     }
-  //   })
-  // }
-
-  // findById(): void {
-  //   this.service.findById(this.id_curso).subscribe(resp => {
-  //     this.curso = resp;
-  //   })
-  // }
-
   cancel(): void {
-    this.router.navigate(['cursos'])
+    this.router.navigate(['/'])
   }
 
   errorValidIdCurso() {
