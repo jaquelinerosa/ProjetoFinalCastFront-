@@ -1,1 +1,37 @@
-<p>delete works!</p>
+ <div class="container">
+    <form class="form class= mat-elevation-z8 ">
+        <h1>Deletando Cursos</h1>
+         <mat-form-field class="full-width">
+         <mat-label>ID</mat-label>
+              <input [(ngModel)]="curso.idCurso" name="idCurso" disabled maxlength="60" matInput placeholder="Ex. jaque">   
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>CATEGORIA</mat-label>
+            <input [(ngModel)]="curso.categoria.nome" name="categoria" disabled maxlength="15" matInput placeholder="Ex. Digite um nome">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>DESCRIÇÃO</mat-label>
+            <input [(ngModel)]="curso.descricao" name="descricao" disabled maxlength="10" matInput placeholder="Digite uma descrição">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>DT. ABERTURA </mat-label>
+            <input [(ngModel)]="curso.dataAbertura" name="dataAbertura" disabled maxlength="18" matInput placeholder="Ex. 00/00/0000">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>DT. FECHAMENTO</mat-label>
+            <input [(ngModel)]="curso.dataFechamento" name="dataFechamento" disabled maxlength="18" matInput placeholder="Ex. 00/00/0000">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>QUANTIDADE</mat-label>
+            <input [(ngModel)]="curso.qtdAluno" name="qtdAluno" disabled maxlength="18" matInput placeholder="Ex. 40">
+        </mat-form-field>
+
+        <button type="button" class="mat-elevation-z8" (click)="delete()" mat-stroked-button color="basic">DELETAR</button>
+        <button type="button" class="mat-elevation-z8" (click)="exit()" mat-stroked-button color="warn">CANCELAR</button>
+    </form>
+</div> -->

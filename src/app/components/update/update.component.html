@@ -1,1 +1,37 @@
-<p>update works!</p>
+<div class="container">
+    <form class="form class= mat-elevation-z8 ">
+        <h1>Atualizando Cursos</h1>
+        <mat-form-field class="full-width">
+            <mat-label>Nome</mat-label>
+            <input [(ngModel)]="curso.idCurso" [formControl]="idCurso" required name="idCurso" maxlength="60" matInput placeholder="Ex. Jaqueline Rosa">
+            <mat-error *ngIf="idCurso.invalid">{{ errorValidIdCurso() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>CATEGORIA</mat-label>
+            <input [(ngModel)]="curso.categoria" name="categoria" [formControl]="categoria" required maxlength="15" >
+            <mat-error *ngIf="categoria.invalid">{{ errorValidCategoria() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>DESCRICAO</mat-label>
+            <input [(ngModel)]="curso.descricao" name="descricao" [formControl]="descricao" required maxlength="15" >
+            <mat-error *ngIf="descricao.invalid">{{ errorValidDescricao() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>DT. ABERTURA</mat-label>
+            <input type="text" [(ngModel)]="curso.dataAbertura" mask="d0/M0/0000" [dropSpecialCharacters]=" false " name="dataAbertura" [formControl]="dataAbertura" required maxlength="10" matInput placeholder="Ex. 00/00/0000 (apenas os números)">
+            <mat-error *ngIf="dataAbertura.invalid">{{ errorValidDataAbertura() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>DT. FECHADURA</mat-label>
+            <input type="text" [(ngModel)]="curso.dataFechamento" mask="d0/M0/0000" [dropSpecialCharacters]=" false " name="dataFechamento"[formControl]="dataFechamento" required maxlength="18" matInput placeholder="Ex. (00) 90000-0000 (apenas os números)">
+            <mat-error *ngIf="dataFechamento.invalid">{{ errorValidDataFechamento() }}</mat-error>
+        </mat-form-field>
+
+        <button type="button" class="mat-elevation-z8" (click)="update()" [disabled]="errorValidIdCurso() || errorValidCategoria() || errorValidDescricao() || errorValidDataAbertura() || errorValidDataFechamento() || errorValidQtdAluno()" mat-stroked-button color="basic">ATUALIZAR</button>
+        <button type="button" class="mat-elevation-z8" (click)="cancel()" mat-stroked-button color="warn">CANCELAR</button>
+    </form>
+</div>

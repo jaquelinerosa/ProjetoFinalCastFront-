@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -28,6 +27,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UpdateComponent } from './components/update/update.component';
 import { HeaderComponent } from './templates/header/header.component';
 import { NavComponent } from './templates/nav/nav.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [

@@ -21,7 +21,7 @@ export class CreateComponent implements OnInit {
     {categoria: {id: 5, nome: "Comunicação"}},
   ]
 
-  curso: Cursos = {  
+  curso: Cursos = {
     categoria: {
       id: undefined,
       nome: '',
@@ -31,13 +31,15 @@ export class CreateComponent implements OnInit {
     dataAbertura: '',
     dataFechamento: '',
     qtdAluno: undefined,
+   
+   
   }
 
   categoria = new FormControl('',[Validators.minLength(1), Validators.required]);
   dataAbertura = new FormControl('',[Validators.minLength(10), Validators.required])
   dataFechamento = new FormControl('',[Validators.minLength(10), Validators.required])
   descricao = new FormControl('',[Validators.minLength(5), Validators.required])
-  qtdAluno = new FormControl('',[Validators.minLength(1), Validators.required])
+  qtdAluno = new FormControl('', [Validators.minLength(500),Validators.required])
 
   constructor(
     private router : Router,
@@ -60,11 +62,18 @@ export class CreateComponent implements OnInit {
     this.curso.dataFechamento = ajusteDataFechamento;
   
     this.cursosService.adicionarCurso(this.curso).subscribe((resp) => {
-      this.cursosService.alert("Dados gravados com sucesso!");
+      this.cursosService.alert("Curso gravados com sucesso!");
       this.router.navigate(['/']);
     },err => {
       this.cursosService.alert(err.error);
     })
+  }
+
+  validDescricao() {
+    if (this.descricao.invalid) {
+      return "Campo obrigatório e não é permitido números e nem caracteres especiais";
+    } 
+    return false;
   }
 
   validDataAbertura() {
@@ -74,9 +83,16 @@ export class CreateComponent implements OnInit {
     return false;
   }
 
-  validDescricao() {
-    if (this.descricao.invalid) {
-      return "Campo obrigatório e não é permitido números e nem caracteres especiais";
+  validDataFechamento() {
+    if (this.dataFechamento.invalid) {
+      return "Campo obrigatório";
+    } 
+    return false;
+  }
+
+  validQtdAluno() {
+    if (this.qtdAluno.invalid) {
+      return "Campo obrigatório e não é permitido texto e caracteres especiais";
     } 
     return false;
   }

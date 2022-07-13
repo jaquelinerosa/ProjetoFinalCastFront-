@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   cursos: Cursos[] = [];
 
-  colunas: string[] = ['idCurso', 'curso', 'categoria', 'descricao',  'dataAbertura', 'dataFechamento', 'qtdAluno', 'acoes'];
+  colunas: string[] = ['idCurso', 'categoria', 'descricao',  'dataAbertura', 'dataFechamento', 'qtdAluno', 'acoes'];
   dataSource = new MatTableDataSource<Cursos>(this.cursos);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
