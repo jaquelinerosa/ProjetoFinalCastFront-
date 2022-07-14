@@ -1,13 +1,13 @@
 .header {
-    height: 7%;
+    height: 8%;
     display: flex;
     background-color: #A1E1FA;
 }
 
 .header .logo {
     display: flex;
-    width: 40%;
-    padding: 3% 3% 3% 1%;
+    width: 15%;
+    padding: 4% 3% 3% 1%;
     float: left;
 }
 

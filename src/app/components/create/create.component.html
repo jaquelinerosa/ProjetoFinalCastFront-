@@ -24,7 +24,7 @@
 
         <mat-form-field class="full-width">
             <mat-label>Descrição</mat-label>
-            <input type="text" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" [(ngModel)]="curso.descricao" [formControl]="descricao" name="descricao" maxlength="60" matInput placeholder="Ex. Esse curso...">
+            <input type="text" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" [(ngModel)]="curso.descricao" [formControl]="descricao" name="descricao" maxlength="60" matInput placeholder="Descreva ...">
             <mat-error *ngIf="descricao.invalid">{{ validDescricao() }}</mat-error>
         </mat-form-field>
 

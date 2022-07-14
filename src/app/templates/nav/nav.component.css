@@ -1,6 +1,6 @@
 .container {
     min-height: 93%;
     max-height: auto;
-    /* background-image: url(/assets/img/fundo.jpg); */
+     background-image: url(/assets/img/fundo.jpg); 
     background-size: cover;
 }

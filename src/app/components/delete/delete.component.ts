@@ -65,7 +65,7 @@ export class DeleteComponent implements OnInit {
 
 
         }, error: error => {
-
+          alert("Não deve permitir a exclusão de cursos já realizados!")
         }
       })
   }

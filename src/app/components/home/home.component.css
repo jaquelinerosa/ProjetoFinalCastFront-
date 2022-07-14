@@ -37,14 +37,15 @@ mat-paginator {
 .create .button {
     text-align: center;
     justify-content: center;
-    width: 15%;
+    width: 10%;
     margin: -3rem auto 4rem 0;
     background-color: #A1E1FA !important;
     color: white;
     background-color: white;
     float: right;
-    margin-right: 1.5rem;
-    outline: rgb(13, 155, 238);
+    margin-right: 3.5rem;
+    outline: 2px solid rgb(13, 155, 238);
+    outline-offset:2px;
 }
 
 .create button:hover {
